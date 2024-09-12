@@ -10,9 +10,9 @@ import (
 
 func createRandomSchool(t *testing.T) School {
 	arg := CreateSchoolParams{
-		Name:    "Mika",
-		Address: "Durlan",
-		Type:    "Osnovna",
+		Name:    util.RandomString(9),
+		Address: util.RandomString(12),
+		Type:    util.RandomString(3),
 	}
 	s, err := testQueries.CreateSchool(context.Background(), arg)
 	require.NoError(t, err)

@@ -6,6 +6,8 @@ import (
 	"main/api"
 	db "main/db/sqlc"
 	"main/util"
+
+	_ "github.com/lib/pq"
 )
 
 func main() {

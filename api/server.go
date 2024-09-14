@@ -22,7 +22,7 @@ func NewServer(db *db.Store) *Server {
 	router := gin.Default()
 	server.router = router
 
-	router.GET("/test")
+	router.GET("/test",testHello)
 
 	return server
 }

@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: course-api-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: course-api
+  template:
+    metadata:
+      labels:
+        app: course-api
+    spec:
+      containers:
+        - name: courses
+          image: courses:latest
+          ports:
+            - containerPort: 8080
+

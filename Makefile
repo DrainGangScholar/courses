@@ -25,4 +25,16 @@ sqlc:
 test:
 	go test -v --cover ./...
 
-.PHONY: dbcontainer startdb stopdb createdb migrateup migratedown sqlc test
+proto:
+	rm -f pb/*.go
+	protoc --proto_path=proto --go_out=pb --go_opt=paths=source_relative \
+    --go-grpc_out=pb --go-grpc_opt=paths=source_relative \
+    proto/*.proto
+
+server:
+	go run main.go
+
+evans:
+	evans --host localhost --port 9090 -r repl
+
+.PHONY: dbcontainer startdb stopdb createdb migrateup migratedown sqlc test proto server evans
